@@ -13,7 +13,7 @@ function Header(): JSX.Element {
           <Text size="large" bold>
             Buy a house
           </Text>
-          <Text size="medium" color={colors.BLUE_GRAY}>
+          <Text size="medium" color={colors.BLUE_GRAY_400}>
             Saving goal
           </Text>
         </Col>
