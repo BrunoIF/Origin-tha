@@ -29,7 +29,6 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-	background-color: ${colors.LIGHT_GRAY}
 }
 ol, ul {
 	list-style: none;
@@ -48,4 +47,9 @@ table {
 }
 `;
 
-export {};
+export const GlobalStyles = createGlobalStyle`
+body {
+	background-color: ${colors.LIGHT_GRAY};
+	font-family: 'Work Sans', sans-serif;
+}
+`;
