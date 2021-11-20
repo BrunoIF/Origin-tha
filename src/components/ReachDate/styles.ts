@@ -9,4 +9,10 @@ export const Container = styled.div`
   box-sizing: border-box;
   display: flex;
   align-items: center;
+
+  transition: 0.2s;
+
+  &:focus {
+    outline: 1px solid ${colors.DARK};
+  }
 `;
