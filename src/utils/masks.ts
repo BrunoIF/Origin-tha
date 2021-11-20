@@ -1,26 +1,9 @@
-import { NOT_NUMBER_PARSEABLE } from './constants';
+export function maskNumber(value: string): string {
+  if (!value) return '';
 
-export function maskCurrency(value: string | number): string {
-  const valueToNumber = Number(value);
-  if (!valueToNumber) throw new Error(NOT_NUMBER_PARSEABLE);
+  const sanitizedValue = value.replace(/,/g, '');
 
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  })
-    .format(valueToNumber)
-    .replace('$', '');
-}
-
-export function maskDecimal(value: number | string): string {
-  const valueToNumber = Number(value);
-  if (!valueToNumber) throw new Error(NOT_NUMBER_PARSEABLE);
-
-  const decimalNumber = new Intl.NumberFormat('en-US').format(valueToNumber);
-
-  if (!decimalNumber.includes('.')) return decimalNumber;
-
-  return new Intl.NumberFormat('en-US', { minimumFractionDigits: 2 }).format(
-    valueToNumber
-  );
+  return Number(sanitizedValue).toLocaleString('en-US', {
+    maximumFractionDigits: 2,
+  });
 }
