@@ -23,6 +23,7 @@ interface TextProps {
   size?: TextSizes;
   color?: string;
   bold?: boolean;
+  margin?: string;
 }
 
 const TEXT_FONT_SIZES: { [key in TextSizes]: string } = {
@@ -35,6 +36,7 @@ export const Text = styled.p<TextProps>`
   font-size: ${(props) => TEXT_FONT_SIZES[props.size as TextSizes]};
   color: ${(props) => props.color};
   font-weight: ${(props) => (props.bold ? '600' : '400')};
+  margin: ${(props) => props.margin};
 `;
 
 Text.defaultProps = {
