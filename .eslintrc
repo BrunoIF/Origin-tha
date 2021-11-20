@@ -28,7 +28,7 @@
       },
       {
         "selector": "variable",
-        "format": ["camelCase", "UPPER_CASE"],
+        "format": ["camelCase", "UPPER_CASE", "PascalCase"],
         "leadingUnderscore": "allow",
         "trailingUnderscore": "allow"
       },
@@ -39,7 +39,11 @@
       {
         "selector": "function",
         "format": ["PascalCase", "camelCase"]
-      }
+      },
+      {
+        "selector": "objectLiteralProperty",
+        "format": ["camelCase", "UPPER_CASE"]
+      },
     ]
   },
   "env": {
