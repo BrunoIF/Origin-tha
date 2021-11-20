@@ -10,6 +10,7 @@ type AlignJustify =
 
 interface RowProps {
   justify?: AlignJustify;
+  margin?: string;
 }
 
 export const Row = styled.div<RowProps>`
@@ -17,6 +18,7 @@ export const Row = styled.div<RowProps>`
   display: flex;
   flex-flow: row nowrap;
   justify-content: ${(props) => props.justify};
+  margin: ${(props) => props.margin};
 `;
 
 Row.defaultProps = {
