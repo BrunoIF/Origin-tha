@@ -24,7 +24,7 @@ export const InputContainer = styled.div<InputContainerProps>`
   height: 56px;
   width: 100%;
   border-radius: 4px;
-  border: 1px solid #e9eef2;
+  border: 1px solid ${colors.LIGHT_GRAY};
   box-sizing: border-box;
   display: flex;
   align-items: center;

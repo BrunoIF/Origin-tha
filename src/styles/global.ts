@@ -49,7 +49,7 @@ table {
 
 export const GlobalStyles = createGlobalStyle`
 body {
-	background-color: ${colors.LIGHT_GRAY};
+	background-color: ${colors.BLUE_GRAY_10};
 	font-family: 'Work Sans', sans-serif;
 }
 `;
