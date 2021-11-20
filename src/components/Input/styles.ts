@@ -14,6 +14,10 @@ export const StyledInput = styled.input`
   &:focus {
     outline: none;
   }
+
+  &::placeholder {
+    color: ${colors.LIGHT_GRAY};
+  }
 `;
 
 interface InputContainerProps {
