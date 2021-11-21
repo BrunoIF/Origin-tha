@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Range } from 'utils/types';
 
 type AlignJustify =
   | 'flex-start'
@@ -28,7 +29,7 @@ Row.defaultProps = {
 };
 
 interface ColProps {
-  span: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+  span: Range<1, 13>;
   margin?: string;
   justify?: AlignJustify;
   align?: AlignJustify;
