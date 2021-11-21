@@ -1,3 +1,5 @@
+import { TextSizes } from './typography';
+
 const WHITE = '#FFF';
 const DARK = '#000';
 const PRIMARY = '#1b31a8';
@@ -18,4 +20,22 @@ export const colors = {
   BLUE_GRAY_400,
   BLUE_GRAY_900,
   BLUE_GRAY_600,
+};
+
+export const TEXT_FONT_SIZES: { [key in TextSizes]: string } = {
+  xxsmall: '12px',
+  xsmall: '14px',
+  small: '16px',
+  medium: '18px',
+  large: '20px',
+  xlarge: '24px',
+};
+
+export const TEXT_FONT_SIZES_DESKTOP: { [key in TextSizes]: string } = {
+  xxsmall: '12px',
+  xsmall: '14px',
+  small: '16px',
+  medium: '20px',
+  large: '24px',
+  xlarge: '32px',
 };

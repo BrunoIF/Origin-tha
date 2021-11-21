@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { colors } from './variables';
+import { MOBILE_BREAKPOINT } from 'utils/constants';
+import { colors, TEXT_FONT_SIZES, TEXT_FONT_SIZES_DESKTOP } from './variables';
 
 interface TitleProps {
   margin: string;
@@ -7,7 +8,7 @@ interface TitleProps {
 
 export const Title = styled.h1<TitleProps>`
   font-family: 'Work Sans', sans-serif;
-  font-size: 18px;
+  font-size: ${TEXT_FONT_SIZES.medium};
   font-weight: 400;
   text-align: center;
   color: ${colors.PRIMARY};
@@ -16,9 +17,19 @@ export const Title = styled.h1<TitleProps>`
   .bold {
     font-weight: 600;
   }
+
+  @media screen and (min-width: ${MOBILE_BREAKPOINT}px) {
+    font-size: ${TEXT_FONT_SIZES_DESKTOP.medium};
+  }
 `;
 
-type TextSizes = 'small' | 'medium' | 'large' | 'xlarge';
+export type TextSizes =
+  | 'xxsmall'
+  | 'xsmall'
+  | 'small'
+  | 'medium'
+  | 'large'
+  | 'xlarge';
 
 type FontTypes = 'primary' | 'secondary';
 
@@ -30,13 +41,6 @@ interface TextProps {
   font?: FontTypes;
   align?: 'left' | 'center' | 'right';
 }
-
-const TEXT_FONT_SIZES: { [key in TextSizes]: string } = {
-  small: '12px',
-  medium: '14px',
-  large: '20px',
-  xlarge: '24px',
-};
 
 const FONT_STYLES: { [key in FontTypes]: { [prop: string]: string } } = {
   primary: { 'font-family': 'Work Sans, sans-serif' },
@@ -55,10 +59,14 @@ export const Text = styled.p<TextProps>`
   span.bold {
     font-weight: 600;
   }
+
+  @media screen and (min-width: ${MOBILE_BREAKPOINT}px) {
+    font-size: ${(props) => TEXT_FONT_SIZES_DESKTOP[props.size as TextSizes]};
+  }
 `;
 
 Text.defaultProps = {
-  size: 'medium',
+  size: 'small',
   color: colors.DARK,
   font: 'primary',
   align: 'left',

@@ -15,7 +15,7 @@ function SavingsSummary(): JSX.Element {
     <S.SummaryContainer>
       <S.SummaryContent>
         <Row justify="space-between" align="center">
-          <Text size="large">Monthly amount</Text>
+          <Text size="medium">Monthly amount</Text>
           <Text size="xlarge" color={colors.SECONDARY} font="secondary">
             ${formatCurrency(savingsStore.monthlyAmount)}
           </Text>
@@ -23,7 +23,7 @@ function SavingsSummary(): JSX.Element {
       </S.SummaryContent>
       <S.SummaryContent bgColor={colors.BLUE_GRAY_10}>
         <Row>
-          <Text align="center" size="small">
+          <Text align="center" size="xxsmall">
             You’re planning{' '}
             <span className="bold">
               {savingsStore.totalMonths} monthly deposits

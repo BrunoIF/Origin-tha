@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from 'styles/variables';
+import { colors, TEXT_FONT_SIZES } from 'styles/variables';
 import { MOBILE_BREAKPOINT } from 'utils/constants';
 
 export const Button = styled.button`
@@ -10,7 +10,7 @@ export const Button = styled.button`
   border: none;
   font-family: 'Work Sans', sans-serif;
   font-weight: 600;
-  font-size: 16px;
+  font-size: ${TEXT_FONT_SIZES.small};
   background-color: ${colors.PRIMARY};
   color: ${colors.WHITE};
 

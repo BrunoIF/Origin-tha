@@ -1,4 +1,5 @@
 import Caret from 'components/Caret';
+import useIsMobileResolution from 'hooks/useIsMobileResolution';
 import useStores from 'hooks/useStores';
 import React, { useEffect, useRef, useState } from 'react';
 import { Col, Row } from 'styles/layout';
@@ -18,6 +19,7 @@ function ReachDate({ initialMonth, initialYear }: Props): JSX.Element {
   const currentMonth = date.getMonth();
   const currentYear = date.getFullYear();
 
+  const isMobile = useIsMobileResolution();
   const { savingsStore } = useStores();
   const [month, _setMonth] = useState<number>(
     () => initialMonth ?? new Date().getMonth()
@@ -100,11 +102,16 @@ function ReachDate({ initialMonth, initialYear }: Props): JSX.Element {
             color={colors.BLUE_GRAY_900}
             margin="0 0 10px 0"
             bold
+            size={isMobile ? 'xsmall' : 'small'}
             data-testid="reachDateMonth"
           >
             {MONTHS[month]}
           </Text>
-          <Text color={colors.BLUE_GRAY_400} data-testid="reachDateYear">
+          <Text
+            color={colors.BLUE_GRAY_400}
+            data-testid="reachDateYear"
+            size={isMobile ? 'xsmall' : 'small'}
+          >
             {year}
           </Text>
         </Col>

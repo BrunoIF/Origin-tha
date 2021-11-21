@@ -1,5 +1,10 @@
 import styled from 'styled-components';
-import { colors } from 'styles/variables';
+import {
+  colors,
+  TEXT_FONT_SIZES,
+  TEXT_FONT_SIZES_DESKTOP,
+} from 'styles/variables';
+import { MOBILE_BREAKPOINT } from 'utils/constants';
 
 export const StyledInput = styled.input`
   width: 100%;
@@ -8,7 +13,7 @@ export const StyledInput = styled.input`
   padding: 16px;
   box-sizing: border-box;
   font-family: 'Rubik', sans-serif;
-  font-size: 20px;
+  font-size: ${TEXT_FONT_SIZES.large};
   color: ${colors.BLUE_GRAY_600};
 
   &:focus {
@@ -17,6 +22,10 @@ export const StyledInput = styled.input`
 
   &::placeholder {
     color: ${colors.LIGHT_GRAY};
+  }
+
+  @media screen and (min-width: ${MOBILE_BREAKPOINT}px) {
+    font-size: ${TEXT_FONT_SIZES_DESKTOP.large};
   }
 `;
 
