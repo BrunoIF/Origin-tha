@@ -1,12 +1,13 @@
-import { computed, makeObservable, observable } from 'mobx';
+import { action, computed, makeObservable, observable } from 'mobx';
 import { formatDecimal } from 'utils/formatters';
 import { RootStore } from './RootStore';
 
 export class SavingsStore {
   protected rootStore;
 
-  public goalMonth: number;
-  public goalYear: number;
+  private date = new Date();
+  public goalMonth: number = this.date.getMonth();
+  public goalYear: number = this.date.getFullYear();
   public goalAmount = 0;
 
   constructor(rootStore: RootStore) {
@@ -16,13 +17,12 @@ export class SavingsStore {
       goalAmount: observable,
       monthlyAmount: computed,
       totalMonths: computed,
+      setGoalAmount: action,
+      setGoalMonth: action,
+      setGoalYear: action,
     });
 
     this.rootStore = rootStore;
-
-    const date = new Date();
-    this.goalMonth = date.getMonth();
-    this.goalYear = date.getFullYear();
   }
 
   public get totalMonths(): number {
