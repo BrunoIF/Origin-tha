@@ -14,10 +14,11 @@ describe('formatters/formatCurrency', () => {
     expect(result).toEqual('1,000.50');
   });
 
-  test('Throws an error if provided value is not parseable to Number', () => {
-    const result = () => formatCurrency('a');
+  test('Returns the provided value if the value is not a number', () => {
+    const input = 'abc';
+    const result = formatCurrency(input);
 
-    expect(result).toThrow(NOT_NUMBER_PARSEABLE);
+    expect(result).toEqual(input);
   });
 });
 
@@ -29,9 +30,10 @@ describe('formatters/formatDecimal', () => {
     expect(result).toEqual(1000.10);
   });
 
-  test('Throws an error if provided value is not parseable to Number', () => {
-    const result = () => formatDecimal('a');
+  test('Returns the provided value if the value is not a number', () => {
+    const input = 'abc';
+    const result = formatDecimal(input);
 
-    expect(result).toThrow(NOT_NUMBER_PARSEABLE);
+    expect(result).toEqual(input);
   });
 });
