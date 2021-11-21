@@ -5,6 +5,7 @@ import { Row } from 'styles/layout';
 import { Text } from 'styles/typography';
 import { colors } from 'styles/variables';
 import { MONTHS } from 'utils/constants';
+import { formatCurrency } from 'utils/formatters';
 import * as S from './styles';
 
 function SavingsSummary(): JSX.Element {
@@ -16,7 +17,7 @@ function SavingsSummary(): JSX.Element {
         <Row justify="space-between" align="center">
           <Text size="large">Monthly amount</Text>
           <Text size="xlarge" color={colors.SECONDARY} font="secondary">
-            ${savingsStore.monthlyAmount}
+            ${formatCurrency(savingsStore.monthlyAmount)}
           </Text>
         </Row>
       </S.SummaryContent>
@@ -28,7 +29,10 @@ function SavingsSummary(): JSX.Element {
               {savingsStore.totalMonths} monthly deposits
             </span>{' '}
             to reach your{' '}
-            <span className="bold">${savingsStore.goalAmount}</span> goal by{' '}
+            <span className="bold">
+              ${formatCurrency(savingsStore.goalAmount)}
+            </span>{' '}
+            goal by{' '}
             <span className="bold">
               {MONTHS[savingsStore.goalMonth]} {savingsStore.goalYear}
             </span>
