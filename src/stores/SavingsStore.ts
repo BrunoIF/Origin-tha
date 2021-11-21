@@ -32,7 +32,7 @@ export class SavingsStore {
 
     const additionalYears = this.goalYear - currentYear;
 
-    const totalMonths = additionalYears * 12 + (11 - currentMonth);
+    const totalMonths = additionalYears * 12 + (this.goalMonth - currentMonth);
 
     return totalMonths;
   }

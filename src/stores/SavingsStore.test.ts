@@ -31,11 +31,14 @@ describe('store/SavingStore', () => {
     const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
     const additionalYears = 5;
+    const additionalMonths = 2;
     const goalYear = currentYear + additionalYears;
-    const totalMonths = additionalYears * 12 + (11 - currentMonth);
+    const totalMonths =
+      additionalYears * 12 + (additionalMonths - currentMonth);
 
     test('totalMonths', () => {
       store.setGoalYear(goalYear);
+      store.setGoalMonth(additionalMonths);
 
       expect(store.totalMonths).toEqual(totalMonths);
     });
