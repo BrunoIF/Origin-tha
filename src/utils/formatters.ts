@@ -12,15 +12,13 @@ export function formatCurrency(value: string | number): string {
     .replace('$', '');
 }
 
-export function formatDecimal(value: number | string): string {
-  const valueToNumber = Number(value);
+export function formatDecimal(
+  value: number | string,
+  decimalPlaces = 2
+): number {
+  const sanitized = typeof value === 'string' ? value.replace(/,/g, '') : value;
+  const valueToNumber = Number(sanitized);
   if (!valueToNumber) throw new Error(NOT_NUMBER_PARSEABLE);
 
-  const decimalNumber = new Intl.NumberFormat('en-US').format(valueToNumber);
-
-  if (!decimalNumber.includes('.')) return decimalNumber;
-
-  return new Intl.NumberFormat('en-US', { minimumFractionDigits: 2 }).format(
-    valueToNumber
-  );
+  return Number(valueToNumber.toFixed(decimalPlaces));
 }

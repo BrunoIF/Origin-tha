@@ -22,16 +22,11 @@ describe('formatters/formatCurrency', () => {
 });
 
 describe('formatters/formatDecimal', () => {
-  test('Does not add unnecessary decimal places', () => {
-    const result = formatDecimal(1000);
-
-    expect(result).toEqual('1,000');
-  });
-
   test('Formats to two decimal places', () => {
     const result = formatDecimal(1000.1);
 
-    expect(result).toEqual('1,000.10');
+    // eslint-disable-next-line prettier/prettier
+    expect(result).toEqual(1000.10);
   });
 
   test('Throws an error if provided value is not parseable to Number', () => {
