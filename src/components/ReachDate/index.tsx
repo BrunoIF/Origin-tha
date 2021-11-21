@@ -1,4 +1,5 @@
 import Caret from 'components/Caret';
+import useStores from 'hooks/useStores';
 import React, { useEffect, useRef, useState } from 'react';
 import { Col, Row } from 'styles/layout';
 import { Text } from 'styles/typography';
@@ -7,6 +8,7 @@ import { MONTHS } from 'utils/constants';
 import * as S from './styles';
 
 function ReachDate(): JSX.Element {
+  const { savingsStore } = useStores();
   const [month, _setMonth] = useState<number>(() => new Date().getMonth());
   const monthRef = useRef<number>(month);
   const [year, setYear] = useState<number>(() => new Date().getFullYear());
@@ -55,6 +57,14 @@ function ReachDate(): JSX.Element {
     return () =>
       elementRef.current?.removeEventListener('keydown', handleKeyPress);
   }, []);
+
+  useEffect(() => {
+    savingsStore.setGoalMonth(month);
+  }, [month]);
+
+  useEffect(() => {
+    savingsStore.setGoalYear(year);
+  }, [year]);
 
   return (
     <S.Container ref={elementRef as any} tabIndex={-1}>
