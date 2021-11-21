@@ -1,5 +1,3 @@
-export const NOT_NUMBER_PARSEABLE = 'Input is not parseable to a Number';
-
 export const MONTH_NAMES = {
   JANUARY: 'January',
   FEBRUARY: 'February',
@@ -16,3 +14,5 @@ export const MONTH_NAMES = {
 };
 
 export const MONTHS = Object.values(MONTH_NAMES);
+
+export const MONTHS_IN_YEAR = 12;

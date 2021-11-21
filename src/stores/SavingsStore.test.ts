@@ -1,4 +1,4 @@
-import { MONTHS } from 'utils/constants';
+import { MONTHS, MONTHS_IN_YEAR } from 'utils/constants';
 import { formatDecimal } from 'utils/formatters';
 import { RootStore } from './RootStore';
 import { SavingsStore } from './SavingsStore';
@@ -34,7 +34,7 @@ describe('store/SavingStore', () => {
     const additionalMonths = 2;
     const goalYear = currentYear + additionalYears;
     const totalMonths =
-      additionalYears * 12 + (additionalMonths - currentMonth);
+      additionalYears * MONTHS_IN_YEAR + (additionalMonths - currentMonth) + 1;
 
     test('totalMonths', () => {
       store.setGoalYear(goalYear);

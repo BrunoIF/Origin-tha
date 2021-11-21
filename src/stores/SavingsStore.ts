@@ -1,4 +1,5 @@
 import { action, computed, makeObservable, observable } from 'mobx';
+import { MONTHS_IN_YEAR } from 'utils/constants';
 import { formatDecimal } from 'utils/formatters';
 import { RootStore } from './RootStore';
 
@@ -32,7 +33,8 @@ export class SavingsStore {
 
     const additionalYears = this.goalYear - currentYear;
 
-    const totalMonths = additionalYears * 12 + (this.goalMonth - currentMonth);
+    const totalMonths =
+      additionalYears * MONTHS_IN_YEAR + (this.goalMonth - currentMonth) + 1;
 
     return totalMonths;
   }
