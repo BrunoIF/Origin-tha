@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { colors } from 'styles/variables';
+import { MOBILE_BREAKPOINT } from 'utils/constants';
 
 export const Button = styled.button`
   height: 56px;
   min-width: 105%;
-  transform: translateX(-2.5%);
   border-radius: 32px;
   text-align: center;
   border: none;
@@ -13,4 +13,8 @@ export const Button = styled.button`
   font-size: 16px;
   background-color: ${colors.PRIMARY};
   color: ${colors.WHITE};
+
+  @media screen and (min-width: ${MOBILE_BREAKPOINT}px) {
+    min-width: 320px;
+  }
 `;
