@@ -96,6 +96,7 @@ function ReachDate({ initialMonth, initialYear }: Props): JSX.Element {
           onClick={handleDecrement}
           data-testid="reachDateDecrement"
           className={isDecrementEnabled ? 'disabled' : ''}
+          cursor="pointer"
         />
         <Col span={3} align="center" justify="space-between">
           <Text
@@ -119,6 +120,7 @@ function ReachDate({ initialMonth, initialYear }: Props): JSX.Element {
           direction="right"
           onClick={handleIncrement}
           data-testid="reachDateIncrement"
+          cursor="pointer"
         />
       </Row>
     </S.Container>
