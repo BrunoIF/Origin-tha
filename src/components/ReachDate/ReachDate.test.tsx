@@ -28,6 +28,7 @@ describe('components/ReachDate', () => {
     const component = screen.getByTestId('reachDate');
     const reachDateMonths = screen.getByTestId('reachDateMonth');
     const reachDateYear = screen.getByTestId('reachDateYear');
+    const decrementButton = screen.getByTestId('reachDateDecrement');
 
     const date = new Date();
     const expectedMonth = MONTHS[date.getMonth()];
@@ -36,6 +37,7 @@ describe('components/ReachDate', () => {
     expect(component).toBeInTheDocument();
     expect(reachDateMonths).toHaveTextContent(expectedMonth);
     expect(reachDateYear).toHaveTextContent(expectedYear);
+    expect(decrementButton).toHaveClass('disabled');
   });
 
   test('Increments month', () => {
@@ -82,6 +84,7 @@ describe('components/ReachDate', () => {
 
     expect(reachDateMonths).toHaveTextContent(expectedMonth);
     expect(reachDateYear).toHaveTextContent(currentYear);
+    expect(decrementButton).toHaveClass('disabled');
   });
 
   test('Increments year', () => {

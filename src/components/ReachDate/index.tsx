@@ -14,6 +14,10 @@ interface Props {
 }
 
 function ReachDate({ initialMonth, initialYear }: Props): JSX.Element {
+  const date = new Date();
+  const currentMonth = date.getMonth();
+  const currentYear = date.getFullYear();
+
   const { savingsStore } = useStores();
   const [month, _setMonth] = useState<number>(
     () => initialMonth ?? new Date().getMonth()
@@ -21,6 +25,9 @@ function ReachDate({ initialMonth, initialYear }: Props): JSX.Element {
   const monthRef = useRef<number>(month);
   const [year, setYear] = useState<number>(
     () => initialYear ?? new Date().getFullYear()
+  );
+  const [isDecrementEnabled, setIsDecrementEnabled] = useState(
+    () => currentMonth === month && currentYear <= year
   );
   const elementRef = useRef<HTMLDivElement>();
 
@@ -71,6 +78,8 @@ function ReachDate({ initialMonth, initialYear }: Props): JSX.Element {
 
   useEffect(() => {
     savingsStore.setGoalMonth(month);
+
+    setIsDecrementEnabled(currentMonth === month && currentYear >= year);
   }, [month]);
 
   useEffect(() => {
@@ -84,6 +93,7 @@ function ReachDate({ initialMonth, initialYear }: Props): JSX.Element {
           direction="left"
           onClick={handleDecrement}
           data-testid="reachDateDecrement"
+          className={isDecrementEnabled ? 'disabled' : ''}
         />
         <Col span={3} align="center" justify="space-between">
           <Text
