@@ -34,7 +34,7 @@
       },
       {
         "selector": "typeLike",
-        "format": ["PascalCase"]
+        "format": ["PascalCase"],
       },
       {
         "selector": "function",
@@ -43,7 +43,7 @@
       {
         "selector": "objectLiteralProperty",
         "format": ["camelCase", "UPPER_CASE"]
-      },
+      }
     ]
   },
   "env": {
