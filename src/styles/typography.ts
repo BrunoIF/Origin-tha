@@ -13,7 +13,7 @@ export const Title = styled.h1<TitleProps>`
   color: ${colors.PRIMARY};
   margin: ${(props) => props.margin};
 
-  span {
+  .bold {
     font-weight: 600;
   }
 `;
