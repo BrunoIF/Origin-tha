@@ -1,4 +1,5 @@
 import { NOT_NUMBER_PARSEABLE } from './constants';
+import { sanitizeNumber } from './utils';
 
 export function formatCurrency(value: string | number): string {
   const valueToNumber = Number(value);
@@ -16,7 +17,7 @@ export function formatDecimal(
   value: number | string,
   decimalPlaces = 2
 ): number {
-  const sanitized = typeof value === 'string' ? value.replace(/,/g, '') : value;
+  const sanitized = typeof value === 'string' ? sanitizeNumber(value) : value;
   const valueToNumber = Number(sanitized);
   if (!valueToNumber) throw new Error(NOT_NUMBER_PARSEABLE);
 
