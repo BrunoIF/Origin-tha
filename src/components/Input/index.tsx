@@ -21,6 +21,7 @@ function Input({
 }: Props): JSX.Element {
   const [inputValue, setInputValue] = useState<string>(mask?.(value) ?? value);
   const inputRef = useRef<HTMLDivElement>();
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleChange = (el: React.FormEvent<HTMLInputElement>) => {
     const {
@@ -41,15 +42,23 @@ function Input({
     onChange?.(value);
   };
 
+  const handleFocus = () => {
+    inputRef.current?.focus();
+    setIsFocused(true);
+  };
+
   return (
     <S.InputContainer
-      onClick={() => inputRef.current?.focus()}
+      onClick={handleFocus}
       data-testid="inputContainer"
+      tabIndex={-1}
+      focused={isFocused}
     >
       {preffix}
       <S.StyledInput
         value={inputValue}
         onChange={handleChange}
+        onBlur={() => setIsFocused(false)}
         placeholder={placeholder}
         ref={inputRef as any}
         data-testid="input"

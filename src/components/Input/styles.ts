@@ -33,6 +33,6 @@ export const InputContainer = styled.div<InputContainerProps>`
   display: flex;
   align-items: center;
   padding: 0 16px;
-
   outline: ${(props) => (props.focused ? `1px solid ${colors.DARK}` : 'none')};
+  transition: 0.2s;
 `;
