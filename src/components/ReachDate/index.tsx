@@ -5,13 +5,23 @@ import { Col, Row } from 'styles/layout';
 import { Text } from 'styles/typography';
 import { colors } from 'styles/variables';
 import { MONTHS } from 'utils/constants';
+import { MonthIndexes } from 'utils/types';
 import * as S from './styles';
 
-function ReachDate(): JSX.Element {
+interface Props {
+  initialMonth?: MonthIndexes;
+  initialYear?: number;
+}
+
+function ReachDate({ initialMonth, initialYear }: Props): JSX.Element {
   const { savingsStore } = useStores();
-  const [month, _setMonth] = useState<number>(() => new Date().getMonth());
+  const [month, _setMonth] = useState<number>(
+    () => initialMonth ?? new Date().getMonth()
+  );
   const monthRef = useRef<number>(month);
-  const [year, setYear] = useState<number>(() => new Date().getFullYear());
+  const [year, setYear] = useState<number>(
+    () => initialYear ?? new Date().getFullYear()
+  );
   const elementRef = useRef<HTMLDivElement>();
 
   const setMonth = (state: number) => {
@@ -68,16 +78,31 @@ function ReachDate(): JSX.Element {
   }, [year]);
 
   return (
-    <S.Container ref={elementRef as any} tabIndex={-1}>
+    <S.Container ref={elementRef as any} tabIndex={-1} data-testid="reachDate">
       <Row justify="space-between" align="center">
-        <Caret direction="left" onClick={handleDecrement} />
+        <Caret
+          direction="left"
+          onClick={handleDecrement}
+          data-testid="reachDateDecrement"
+        />
         <Col span={3} align="center" justify="space-between">
-          <Text color={colors.BLUE_GRAY_900} margin="0 0 10px 0" bold>
+          <Text
+            color={colors.BLUE_GRAY_900}
+            margin="0 0 10px 0"
+            bold
+            data-testid="reachDateMonth"
+          >
             {MONTHS[month]}
           </Text>
-          <Text color={colors.BLUE_GRAY_400}>{year}</Text>
+          <Text color={colors.BLUE_GRAY_400} data-testid="reachDateYear">
+            {year}
+          </Text>
         </Col>
-        <Caret direction="right" onClick={handleIncrement} />
+        <Caret
+          direction="right"
+          onClick={handleIncrement}
+          data-testid="reachDateIncrement"
+        />
       </Row>
     </S.Container>
   );
