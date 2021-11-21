@@ -16,3 +16,5 @@ export const MONTH_NAMES = {
 export const MONTHS = Object.values(MONTH_NAMES);
 
 export const MONTHS_IN_YEAR = 12;
+
+export const MOBILE_BREAKPOINT = 768;
