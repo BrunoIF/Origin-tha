@@ -1,4 +1,3 @@
-import { NOT_NUMBER_PARSEABLE } from './constants';
 import { formatCurrency, formatDecimal } from './formatters';
 
 describe('formatters/formatCurrency', () => {
