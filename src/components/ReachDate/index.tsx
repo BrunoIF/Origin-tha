@@ -48,11 +48,12 @@ function ReachDate(): JSX.Element {
 
   useEffect(() => {
     const handleKeyPress = (keyEvent: KeyboardEvent) => {
+      keyEvent.preventDefault();
       if (keyEvent.code === 'ArrowRight') handleIncrement();
       if (keyEvent.code === 'ArrowLeft') handleDecrement();
     };
 
-    elementRef.current?.addEventListener('keyup', handleKeyPress);
+    elementRef.current?.addEventListener('keydown', handleKeyPress);
 
     return () =>
       elementRef.current?.removeEventListener('keydown', handleKeyPress);
