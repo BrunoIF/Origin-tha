@@ -20,17 +20,6 @@ describe.skip('masks/maskNumber', () => {
 });
 
 describe('masks/maskNumberV2', () => {
-  test('Masks the value correctly', () => {
-    const result = maskNumberV2('1234');
-    expect(result).toEqual('12.34');
-  });
-
-  test('Applies mask with decimal places for 6 digits', () => {
-    const result = maskNumberV2('1234,56');
-
-    expect(result).toEqual('1,234.56');
-  });
-
   test('Masks the value correctly for 7 digits', () => {
     const result = maskNumberV2('1234567');
 
@@ -41,6 +30,17 @@ describe('masks/maskNumberV2', () => {
     const result = maskNumberV2('12345');
 
     expect(result).toEqual('123.45');
+  });
+
+  test('Masks the value correctly for 4 digits', () => {
+    const result = maskNumberV2('1234');
+    expect(result).toEqual('12.34');
+  });
+
+  test('Applies mask with decimal places', () => {
+    const result = maskNumberV2('1234,56');
+
+    expect(result).toEqual('1,234.56');
   });
 
   test('Returns the provided value if input is not number', () => {

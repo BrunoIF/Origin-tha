@@ -2,7 +2,6 @@ import { sanitizeNumber } from './utils';
 
 export function maskNumber(value: string): string {
   const sanitized = typeof value === 'string' ? sanitizeNumber(value) : value;
-  console.log(`sanitized`, sanitized);
   const valueToNumber = Number(sanitized);
 
   if (!valueToNumber) return value;
@@ -35,10 +34,4 @@ export function maskNumberV2(value: string): string {
   }
 
   return maskedValue.split('').reverse().join('') + `.${decimals}`;
-
-  // const decimals = sanitized.slice(-2);
-  // console.log('decimals', decimals);
-  // const full = sanitized.substr(0, sanitized.length - 2);
-
-  // return `${new_value}.${decimals}`;
 }
