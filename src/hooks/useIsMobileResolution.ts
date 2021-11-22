@@ -7,8 +7,13 @@ function useIsMobileResolution(): boolean {
   );
 
   useEffect(() => {
-    setIsMobileBreakpoint(isMobile());
-  }, [window.innerWidth]);
+    const handleResize = () => setIsMobileBreakpoint(isMobile());
+
+    window.addEventListener('resize', handleResize);
+
+    console.log('window inner width', window.innerWidth);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return isMobileBreakpoint;
 }
