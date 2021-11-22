@@ -7,6 +7,8 @@ export function formatCurrency(value: string | number): string {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
+    minimumIntegerDigits: 1,
+    minimumFractionDigits: 2,
   })
     .format(valueToNumber)
     .replace('$', '');
