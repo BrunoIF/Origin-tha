@@ -39,7 +39,7 @@ function Input({
 
     const formattedValue = mask?.(value) ?? value;
     setInputValue(formattedValue);
-    onChange?.(value);
+    onChange?.(formattedValue);
   };
 
   const handleFocus = () => {
