@@ -11,7 +11,6 @@ function useIsMobileResolution(): boolean {
 
     window.addEventListener('resize', handleResize);
 
-    console.log('window inner width', window.innerWidth);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
