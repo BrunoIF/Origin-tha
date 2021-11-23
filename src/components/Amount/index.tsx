@@ -2,7 +2,7 @@ import { CurrencyIcon } from 'assets';
 import Input from 'components/Input';
 import useStores from 'hooks/useStores';
 import React from 'react';
-import { maskNumberV2 } from 'utils/masks';
+import { maskCurrency } from 'utils/masks';
 
 function Amount(): JSX.Element {
   const { savingsStore } = useStores();
@@ -15,7 +15,7 @@ function Amount(): JSX.Element {
   return (
     <Input
       placeholder="1,000"
-      mask={maskNumberV2}
+      mask={maskCurrency}
       preffix={<CurrencyIcon />}
       type="number"
       onChange={handleChange}

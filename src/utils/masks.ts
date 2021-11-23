@@ -1,17 +1,4 @@
-import { sanitizeNumber } from './utils';
-
-export function maskNumber(value: string): string {
-  const sanitized = typeof value === 'string' ? sanitizeNumber(value) : value;
-  const valueToNumber = Number(sanitized);
-
-  if (!valueToNumber) return value;
-
-  return Number(sanitized).toLocaleString('en-US', {
-    maximumFractionDigits: 2,
-  });
-}
-
-export function maskNumberV2(value: string): string {
+export function maskCurrency(value: string): string {
   const sanitized = value.replace(/[,.]/g, '');
 
   if (!Number(sanitized)) return value;

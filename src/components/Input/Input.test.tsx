@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { maskNumberV2 } from 'utils/masks';
+import { maskCurrency } from 'utils/masks';
 import Input from '.';
 
 describe('components/Input', () => {
@@ -21,16 +21,16 @@ describe('components/Input', () => {
 
   test('The initial value is formatted with the provided mask function', () => {
     const value = '1000';
-    render(<Input value={value} mask={maskNumberV2} />);
+    render(<Input value={value} mask={maskCurrency} />);
 
     expect(screen.getByTestId('input')).toHaveValue('10.00');
   });
 
   test('The value is formatted with the provided mask function', () => {
     const value = '25000';
-    const formattedValue = maskNumberV2(value);
+    const formattedValue = maskCurrency(value);
 
-    render(<Input value={value} mask={maskNumberV2} />);
+    render(<Input value={value} mask={maskCurrency} />);
 
     const input = screen.getByTestId('input');
     fireEvent.change(input, { target: { value } });
