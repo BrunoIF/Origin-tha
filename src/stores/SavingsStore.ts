@@ -58,6 +58,6 @@ export class SavingsStore {
   }
 
   public setGoalAmount(value: number): void {
-    this.goalAmount = value;
+    this.goalAmount = value || 0;
   }
 }
