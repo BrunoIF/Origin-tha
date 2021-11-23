@@ -4,7 +4,7 @@ import { MOBILE_BREAKPOINT } from 'utils/constants';
 
 export const Button = styled.button`
   height: 56px;
-  min-width: 105%;
+  width: 105%;
   border-radius: 32px;
   text-align: center;
   border: none;
@@ -15,6 +15,6 @@ export const Button = styled.button`
   color: ${colors.WHITE};
 
   @media screen and (min-width: ${MOBILE_BREAKPOINT}px) {
-    min-width: 320px;
+    max-width: 320px;
   }
 `;
