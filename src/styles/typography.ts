@@ -40,6 +40,7 @@ interface TextProps {
   margin?: string;
   font?: FontTypes;
   align?: 'left' | 'center' | 'right';
+  truncate?: boolean;
 }
 
 const FONT_STYLES: { [key in FontTypes]: { [prop: string]: string } } = {
@@ -55,6 +56,14 @@ export const Text = styled.p<TextProps>`
   text-align: ${(props) => props.align};
 
   ${(props) => ({ ...FONT_STYLES[props.font as FontTypes] })};
+
+  ${(props) =>
+    props.truncate &&
+    `
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 100%;`}
 
   span.bold {
     font-weight: 600;
