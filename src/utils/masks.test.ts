@@ -6,6 +6,7 @@ describe('masks/maskCurrency', () => {
 
     expect(result).toEqual('123,456,789.10');
   });
+
   test('Masks the value correctly for 7 digits', () => {
     const result = maskCurrency('1234567');
 
@@ -27,6 +28,12 @@ describe('masks/maskCurrency', () => {
     const result = maskCurrency('1234,56');
 
     expect(result).toEqual('1,234.56');
+  });
+
+  test('Removes insignificant zeros', () => {
+    const result = maskCurrency('00012340');
+
+    expect(result).toEqual('123.40');
   });
 
   test('Returns the provided value if input is not number', () => {

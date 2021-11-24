@@ -3,12 +3,14 @@ export function maskCurrency(value: string): string {
 
   if (!Number(sanitized)) return value;
 
-  const inverted = sanitized
-    .slice(0, sanitized.length - 2)
+  const numberValue = Number(sanitized).toString();
+
+  const inverted = numberValue
+    .slice(0, numberValue.length - 2)
     .split('')
     .reverse()
     .join('');
-  const decimals = sanitized.slice(-2);
+  const decimals = numberValue.slice(-2);
   let maskedValue = '';
 
   for (let i = 0; i < inverted.length; i++) {
