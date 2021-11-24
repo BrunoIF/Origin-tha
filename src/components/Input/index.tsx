@@ -28,12 +28,18 @@ function Input({
       currentTarget: { value },
     } = el;
 
-    const areAllNumberRegex = /^([\d,.]+)$/;
+    const areAllNumberRegex = /^([\d]+)$/;
+    const sanitizedValue = value.replace(/[,.]/g, '');
     if (
       type === 'number' &&
-      !areAllNumberRegex.test(value) &&
+      !areAllNumberRegex.test(sanitizedValue) &&
       value.length !== 0
     ) {
+      if (sanitizedValue.length === 0) {
+        setInputValue('');
+        onChange?.('');
+      }
+
       return;
     }
 
