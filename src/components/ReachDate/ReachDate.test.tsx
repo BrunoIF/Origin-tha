@@ -120,4 +120,40 @@ describe('components/ReachDate', () => {
     expect(reachDateMonths).toHaveTextContent(expectedMonth);
     expect(reachDateYear).toHaveTextContent(expectedYear);
   });
+
+  test('Increments month when pressing ArrowRight', () => {
+    const initialMonth = 0;
+    render(<ReachDate initialMonth={initialMonth} initialYear={initialYear} />);
+
+    const reachDateComponent = screen.getByTestId('reachDate');
+    const reachDateMonths = screen.getByTestId('reachDateMonth');
+
+    reachDateComponent.focus();
+    fireEvent.keyDown(reachDateComponent, {
+      key: 'ArrowRight',
+      code: 'ArrowRight',
+    });
+
+    const expectedMonth = MONTHS[1];
+
+    expect(reachDateMonths).toHaveTextContent(expectedMonth);
+  });
+
+  test('Decrements month when pressing ArrowLeft', () => {
+    const initialMonth = 0;
+    render(<ReachDate initialMonth={initialMonth} initialYear={initialYear} />);
+
+    const reachDateComponent = screen.getByTestId('reachDate');
+    const reachDateMonths = screen.getByTestId('reachDateMonth');
+
+    reachDateComponent.focus();
+    fireEvent.keyDown(reachDateComponent, {
+      key: 'ArrowLeft',
+      code: 'ArrowLeft',
+    });
+
+    const expectedMonth = MONTHS[11];
+
+    expect(reachDateMonths).toHaveTextContent(expectedMonth);
+  });
 });
