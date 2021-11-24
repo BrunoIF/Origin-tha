@@ -1,7 +1,7 @@
 import useStores from 'hooks/useStores';
 import { observer } from 'mobx-react';
 import React from 'react';
-import { Row } from 'styles/layout';
+import { Col, Row } from 'styles/layout';
 import { Text } from 'styles/typography';
 import { colors } from 'styles/variables';
 import { MONTHS } from 'utils/constants';
@@ -15,10 +15,19 @@ function SavingsSummary(): JSX.Element {
     <S.SummaryContainer>
       <S.SummaryContent>
         <Row justify="space-between" align="center">
-          <Text size="medium">Monthly amount</Text>
-          <Text size="xlarge" color={colors.SECONDARY} font="secondary">
-            ${formatCurrency(savingsStore.monthlyAmount)}
-          </Text>
+          <Col span={7}>
+            <Text size="medium">Monthly amount</Text>
+          </Col>
+          <Col span={5} align="flex-end">
+            <Text
+              size="xlarge"
+              color={colors.SECONDARY}
+              font="secondary"
+              truncate
+            >
+              ${formatCurrency(savingsStore.monthlyAmount)}
+            </Text>
+          </Col>
         </Row>
       </S.SummaryContent>
       <S.SummaryContent bgColor={colors.BLUE_GRAY_10}>
