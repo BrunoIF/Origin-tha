@@ -25,9 +25,10 @@ function ReachDate({ initialMonth, initialYear }: Props): JSX.Element {
     () => initialMonth ?? new Date().getMonth()
   );
   const monthRef = useRef<number>(month);
-  const [year, setYear] = useState<number>(
+  const [year, _setYear] = useState<number>(
     () => initialYear ?? new Date().getFullYear()
   );
+  const yearRef = useRef<number>(year);
   const [isDecrementEnabled, setIsDecrementEnabled] = useState(
     () => currentMonth === month && currentYear <= year
   );
@@ -38,15 +39,21 @@ function ReachDate({ initialMonth, initialYear }: Props): JSX.Element {
     _setMonth(state);
   };
 
+  const setYear = (state: number) => {
+    yearRef.current = state;
+    _setYear(state);
+  };
+
   const handleDecrement = () => {
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth();
 
-    if (year === currentYear && currentMonth === monthRef.current) return;
+    if (currentYear === yearRef.current && currentMonth === monthRef.current)
+      return;
 
     if (monthRef.current === 0) {
       setMonth(11);
-      setYear((prevYear) => prevYear - 1);
+      setYear(yearRef.current - 1);
 
       return;
     }
@@ -57,7 +64,7 @@ function ReachDate({ initialMonth, initialYear }: Props): JSX.Element {
   const handleIncrement = () => {
     if (monthRef.current === 11) {
       setMonth(0);
-      setYear(year + 1);
+      setYear(yearRef.current + 1);
 
       return;
     }
