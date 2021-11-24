@@ -1,6 +1,11 @@
 import { maskCurrency } from './masks';
 
 describe('masks/maskCurrency', () => {
+  test('Masks the value correctly for 11 digits', () => {
+    const result = maskCurrency('12345678910');
+
+    expect(result).toEqual('123,456,789.10');
+  });
   test('Masks the value correctly for 7 digits', () => {
     const result = maskCurrency('1234567');
 

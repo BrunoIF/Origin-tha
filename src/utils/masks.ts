@@ -12,7 +12,7 @@ export function maskCurrency(value: string): string {
   let maskedValue = '';
 
   for (let i = 0; i < inverted.length; i++) {
-    if (i / 3 === 1) {
+    if (i && i % 3 === 0) {
       maskedValue = `${maskedValue},${inverted[i]}`;
       continue;
     }
